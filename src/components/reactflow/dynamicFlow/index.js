@@ -22,7 +22,7 @@ const data = {
         {id: '1-4', deviceType: 'NON-FTE', level: '2', child: ['1-4-1']},
 
         // level-3
-        {id: '1-1-1', deviceType: 'SWITCH', level: '3', child: []},
+        {id: '1-1-1', deviceType: 'SWITCH', level: '3', child: ['1-1-1-1', '1-1-1-2']},
         {id: '1-1-2', deviceType: 'SWITCH', level: '3', child: []},
         {id: '1-1-3', deviceType: 'CNM', level: '3', child: []},
         {id: '1-1-4', deviceType: 'SWITCH', level: '3', child: []},
@@ -45,8 +45,11 @@ const data = {
         {id: '1-3-3', deviceType: 'CNM', level: '3', child: []},
 
         {id: '1-4-1', deviceType: 'SWITCH', level: '3', child: []},
+
+        // level-4
+        {id: '1-1-1-1', deviceType: 'SWITCH', level: '4', child: []},
+        {id: '1-1-1-2', deviceType: 'SWITCH', level: '4', child: []}
     ],
-    edges: [],
 }
 
 const parseNodes = (nodes = []) => {
