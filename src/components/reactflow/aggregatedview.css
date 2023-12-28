@@ -1,0 +1,22 @@
+.charts-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: gray;
+  overflow-y: scroll;
+}
+
+.chart-container .expand-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 10000;
+}
+.chart-container {
+  position: relative;
+  width: 49%;
+  /* max-width: 47%; */
+  margin: 5px;
+  height: 50%;
+}

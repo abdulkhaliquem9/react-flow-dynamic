@@ -1,0 +1,83 @@
+{
+  "id": "21609bb7-aac8-45c6-b042-7933f45edca5",
+  "deviceType": "BACKBONE",
+  "deviceIds": ["1", "2"],
+  "childIds": [3, 4, 6, 9, 11, 13, 24, 8, 5, 7, 10, 12],
+  "childCount": 12,
+  "child": [
+    {
+      "id": "800fdd63-0abe-4ba1-96df-40c6aee99664",
+      "deviceType": "SWITCH",
+      "deviceIds": [3, 4, 6, 8, 5, 7],
+      "childIds": [],
+      "childCount": 0,
+      "child": []
+    },
+    {
+      "id": "345cda02-5474-4741-a60a-b57fd31073d9",
+      "deviceType": "FTE",
+      "deviceIds": [9, 10],
+      "childIds": [],
+      "childCount": 0,
+      "child": []
+    },
+    {
+      "id": "be55df40-cec8-4349-b4df-22fe416e2150",
+      "deviceType": "CNMs",
+      "deviceIds": [11, 12],
+      "childIds": [14, 15, 17, 19, 16, 18],
+      "childCount": 6,
+      "child": [
+        {
+          "id": "338ec619-a254-4e47-82bc-e297aab04fb8",
+          "deviceType": "FTE",
+          "deviceIds": [14, 15],
+          "childIds": [],
+          "childCount": 0,
+          "child": []
+        },
+        {
+          "id": "b38751f7-d5e4-417d-9f3d-81f7d1234850",
+          "deviceType": "CNMs",
+          "deviceIds": [17, 16],
+          "childIds": [21, 19, 20, 22],
+          "childCount": 4,
+          "child": [
+            {
+              "id": "ece4bf8c-d5c9-4556-9034-b7619563dc16",
+              "deviceType": "FTE",
+              "deviceIds": [21, 20],
+              "childIds": [],
+              "childCount": 0,
+              "child": []
+            },
+            {
+              "id": "db352f5c-44e7-40b0-9a07-0126dafbeb79",
+              "deviceType": "non-FTE",
+              "deviceIds": [19, 22],
+              "childIds": [],
+              "childCount": 0,
+              "child": []
+            }
+          ]
+        },
+        {
+          "id": "22b3d53c-98a2-47c9-b629-e030c8a6b65d",
+          "deviceType": "non-FTE",
+          "deviceIds": [19, 18],
+          "childIds": [],
+          "childCount": 0,
+          "child": []
+        }
+      ]
+    },
+    {
+      "id": "0529a239-5de3-4e45-8ca3-e6609f0ef1c1",
+      "deviceType": "non-FTE",
+      "deviceIds": [13, 24],
+      "childIds": [],
+      "childCount": 0,
+      "child": []
+    }
+  ]
+}

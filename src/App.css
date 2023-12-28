@@ -1,0 +1,600 @@
+.App-container-main {
+  width: 100%;
+  height: 100%;
+  background: #f7f7f7;
+}
+
+.App-global-header {
+  display: flex;
+  width: 100%;
+  height: 40px;
+  margin-top: 18px;
+  align-items: center;
+  background-color: white;
+}
+
+.App-menu-icon {
+  margin-left: 40px;
+  size: 24px;
+}
+
+.App-honeywell-icon {
+  width: 108.069px;
+  height: 11.995px;
+  margin-left: 12px;
+}
+
+.App-line-1 {
+  margin-left: 12px;
+}
+
+.App-name {
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+  /* Subtitles/ Subtitle 2 */
+  font-family: Honeywell Sans Web;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 150% */
+  margin-left: 12px;
+}
+
+.App-expand-icon {
+  margin-left: auto;
+  margin-right: 40px;
+}
+
+.App-title {
+  color: var(--typography-light-base-default-303030, #303030);
+  font-feature-settings: 'clig' off, 'liga' off;
+  /* Headings/ Heading 6 */
+  font-family: Honeywell Sans Web;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px; /* 140% */
+  margin-top: 13px;
+  margin-left: 39px;
+}
+
+.App-info-container {
+  display: flex;
+}
+
+.App-view-container {
+  display: inline-flex;
+  padding: 2px;
+  align-items: center;
+  gap: 4px;
+  border-radius: 4px;
+  background: var(--greyscale-grey-p-7-f-0-f-0-f-0, #f0f0f0);
+  /* Light/Shadow_-1dp (Inner_shadow_1) */
+  box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.15) inset;
+  margin-left: auto;
+  margin-right: 57px;
+  margin-top: 8px;
+}
+
+.App-project-view {
+  display: flex;
+  padding: 2px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.App-project-view-icon {
+  width: 12px;
+  height: 12px;
+  stroke-width: 1.5px;
+  stroke: var(--icon-light-base-default-gray-n-5303030, #303030);
+}
+
+.App-project-view-text {
+  color: var(--typography-light-secondary-606060, #606060);
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  /* Buttons & Links/Secondary & Tertiary - Regular & Small */
+  font-family: Honeywell Sans Web;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 142.857% */
+  letter-spacing: 0.5px;
+}
+
+.App-monitoring-view {
+  display: flex;
+  padding: 2px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 3px;
+  border: 1px solid var(--greyscale-grey-p-6-e-0-e-0-e-0, #e0e0e0);
+  background: var(--greyscale-grey-p-9-ffffff, #fff);
+  /* Light/Shadow_1dp */
+  box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.15);
+}
+
+.App-monitoring-view-icon {
+  width: 12px;
+  height: 12px;
+  stroke-width: 1.5px;
+  stroke: var(--icon-light-base-default-gray-n-5303030, #303030);
+}
+
+.App-monitoring-view-text {
+  color: var(--typography-light-base-default-303030, #303030);
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  /* Buttons & Links/Secondary & Tertiary - Regular & Small */
+  font-family: Honeywell Sans Web;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 142.857% */
+  letter-spacing: 0.5px;
+}
+
+.App-main {
+  width: 98%;
+  height: 95%;
+  margin-left: 30px;
+  margin-top: 8px;
+  margin-bottom: 34px;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid var(--greyscale-grey-p-6-e-0-e-0-e-0, #e0e0e0);
+  background: var(--background-light-component-container-1, #fff);
+  /* Light/Shadow_1dp */
+  box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.15);
+}
+
+.App-tool-bar {
+  display: flex;
+  height: 60px;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.App-tool-bar-search {
+  display: flex;
+  height: 40px;
+  width: 242px;
+  align-items: center;
+  gap: 10px;
+  margin-left: 30px;
+  border-radius: 4px;
+  background: var(--greyscale-grey-p-7-f-0-f-0-f-0, #f0f0f0);
+  /* Light/Shadow_-1dp (Inner_shadow_1) */
+  box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.15) inset;
+}
+
+.App-tool-bar-search-input {
+  border: none;
+  border-color: transparent;
+  height: 35px;
+  width: 200px;
+  background: var(--greyscale-grey-p-7-f-0-f-0-f-0, #f0f0f0);
+  margin-left: 1px;
+}
+
+.App-zoom-container {
+  display: flex;
+  width: 266px;
+  height: 43px;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 114.69px;
+  border-radius: 2px;
+  background: #fff;
+}
+
+.App-zoom-input {
+  display: flex;
+  width: 58px;
+  height: 28px;
+  align-items: flex-start;
+  margin-left: 11px;
+  gap: 10px;
+  border: none;
+  border-color: transparent;
+  border-radius: 4px;
+  background: var(--greyscale-grey-p-7-f-0-f-0-f-0, #f0f0f0);
+  /* Light/Shadow_-1dp (Inner_shadow_1) */
+  box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.15) inset;
+}
+
+.App-zoom-icon {
+  display: flex;
+  padding: 6px;
+  justify-content: center;
+  align-items: center;
+}
+
+.App-zoom-minus-icon {
+  display: flex;
+  padding: 2px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 9px;
+}
+
+.App-zoom-bar {
+  width: 112px;
+  height: 4px;
+  flex-shrink: 0;
+  border-radius: 2px;
+  border-radius: 2px;
+  background: var(
+    --component-light-linear-2,
+    linear-gradient(90deg, #0072c2 0%, #1792e5 100%)
+  );
+}
+
+.App-zoom-plus-icon {
+  display: flex;
+  padding: 2px;
+  justify-content: center;
+  align-items: center;
+}
+
+.App-tool-bar-right {
+  display: flex;
+  margin-left: auto;
+}
+
+.App-generate-report-container {
+  display: flex;
+  width: 148px;
+  height: 20px;
+  padding: 4px 16px 4px 12px;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 2px;
+  margin-left: 18.6px;
+  gap: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--greyscale-grey-p-7-f-0-f-0-f-0, #f0f0f0);
+  background: var(--background-light-component-container-1, #fff);
+  /* Light/Shadow_1dp */
+  box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.15);
+}
+
+.App-generate-report-icon1 {
+  width: 10.335px;
+  height: 14px;
+  flex-shrink: 0;
+  fill: #000;
+  position: absolute;
+}
+
+.App-generate-report-icon2 {
+  width: 5.168px;
+  height: 6px;
+  flex-shrink: 0;
+  fill: #000;
+  margin-left: 6px;
+  margin-top: 8px;
+}
+
+.App-generate-report-text {
+  color: var(--typography-light-base-default-303030, #303030);
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  /* Buttons & Links/Secondary & Tertiary - Regular & Small */
+  font-family: Honeywell Sans Web;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 142.857% */
+  letter-spacing: 0.5px;
+}
+
+.App-tool-vertical-divider {
+  width: 2.067px;
+  height: 37px;
+  flex-shrink: 0;
+  margin-left: 18.6px;
+}
+
+.App-refresh-container {
+  display: flex;
+  width: 82.6px;
+  height: 20px;
+  padding: 4px 16px 4px 12px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+
+  border-radius: 4px;
+  border: 1px solid var(--greyscale-grey-p-7-f-0-f-0-f-0, #f0f0f0);
+  background: var(--background-light-component-container-1, #fff);
+  /* Light/Shadow_1dp */
+  box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.15);
+}
+
+.App-refresh-icon {
+  width: 12px;
+  height: 10px;
+  flex-shrink: 0;
+  fill: var(--icon-light-base-default-gray-n-5303030, #303030);
+}
+
+.App-refresh-text {
+  color: var(--typography-light-base-default-303030, #303030);
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  /* Buttons & Links/Secondary & Tertiary - Regular & Small */
+  font-family: Honeywell Sans Web;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 142.857% */
+  letter-spacing: 0.5px;
+}
+
+.App-switch-detail-view-container {
+  display: flex;
+}
+
+.App-switch-detail-visible {
+  display: block;
+  margin-left: 1110px;
+  position: absolute;
+  width: 320px;
+  height: 910px;
+  flex-shrink: 0;
+  background: var(--background-light-component, #fff);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.App-switch-detail-hidden {
+  display: none;
+  margin-left: 1110px;
+  position: absolute;
+  width: 320px;
+  height: 910px;
+  flex-shrink: 0;
+  background: var(--background-light-component, #fff);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.App-switch-detail-attribute {
+  display: flex;
+  width: 268px;
+  height: 72.177px;
+  margin-left: 13px;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.App-switch-detail-attribute-label {
+  color: var(--typography-light-secondary-606060, #606060);
+  font-feature-settings: 'clig' off, 'liga' off;
+  /* Subtitles/ Subtitle 2 */
+  font-family: Honeywell Sans Web;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 150% */
+}
+
+.App-switch-detail-attribute-box {
+  display: flex;
+  width: 268px;
+  height: 40px;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 4px;
+  border: 1px solid var(--greyscale-grey-p-6-e-0-e-0-e-0, #e0e0e0);
+}
+
+.App-switch-detail-attribute-header {
+  display: flex;
+}
+
+.App-pin-button {
+  display: flex;
+  height: 28px;
+  padding: 4px 16px 4px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+}
+
+.App-pin-button-icon {
+  width: 12px;
+  height: 12px;
+  fill: var(--icon-light-base-default-gray-n-5303030, #303030);
+}
+
+.App-pin-button-text {
+  color: var(--typography-light-blue-005-eac, #005eac);
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  /* Buttons & Links/Secondary & Tertiary - Regular & Small */
+  font-family: Honeywell Sans Web;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 142.857% */
+  letter-spacing: 0.5px;
+}
+
+.App-close-icon {
+  width: 12px;
+  height: 12px;
+  stroke-width: 1.5px;
+  stroke: var(--icon-light-secondary-gray-n-2606060, #606060);
+  margin-left: auto;
+  margin-right: 16.92px;
+  margin-top: 14.92px;
+}
+
+.App-system-information-label {
+  color: var(--typography-light-base-default-303030, #303030);
+  font-feature-settings: 'clig' off, 'liga' off;
+  /* Body/ Body 1 (Bold) */
+  font-family: Honeywell Sans Web;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 150% */
+  margin-left: 12px;
+}
+
+.App-switch-detail-attribute-horizontal-divider {
+  width: 100%;
+  height: 2px;
+  flex-shrink: 0;
+  background: var(--greyscale-grey-a-18-f-8-f-8-f, #8f8f8f);
+  margin-bottom: 37.39px;
+  margin-top: 8px;
+}
+
+.App-switch-detail-attribute-switch-name {
+  display: flex;
+  width: 167px;
+  height: 23.729px;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+  /* Body/ Body 1 (Bold) */
+  font-family: Honeywell Sans Web;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 150% */
+  margin-left: 12px;
+  margin-bottom: 31.8px;
+}
+
+.App-scan-and-validate-container {
+  display: flex;
+  width: 243px;
+  height: 28px;
+  padding: 4px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 3px;
+  border: 1px solid var(--greyscale-grey-p-6-e-0-e-0-e-0, #e0e0e0);
+  background: var(--greyscale-grey-p-9-ffffff, #fff);
+  /* Light/Shadow_1dp */
+  box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.15);
+  margin-top: 105.94px;
+  margin-left: 17px;
+}
+
+.App-scan-and-validate-icon {
+  width: 12px;
+  height: 11px;
+  flex-shrink: 0;
+  stroke-width: 1.5px;
+  stroke: var(--icon-light-base-default-gray-n-5303030, #303030);
+}
+
+.App-scan-and-validate-text {
+  color: var(--typography-light-base-default-303030, #303030);
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  /* Buttons & Links/Secondary & Tertiary - Regular & Small */
+  font-family: Honeywell Sans Web;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 142.857% */
+  letter-spacing: 0.5px;
+}
+
+.App-replace-duplicate-container {
+  display: flex;
+  margin-left: 16px;
+  margin-top: 12px;
+}
+
+.App-replace-button-container {
+  display: flex;
+  width: 113px;
+  height: 32px;
+  margin-right: 18px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--greyscale-grey-p-7-f-0-f-0-f-0, #f0f0f0);
+  background: var(--background-light-component-container-1, #fff);
+  /* Light/Shadow_1dp */
+  box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.15);
+}
+.App-replace-button-icon {
+  width: 12px;
+  height: 10px;
+  flex-shrink: 0;
+  fill: var(--icon-light-base-default-gray-n-5303030, #303030);
+}
+
+.App-replace-button-text {
+  color: var(--typography-light-base-default-303030, #303030);
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  /* Buttons & Links/Secondary & Tertiary - Regular & Small */
+  font-family: Honeywell Sans Web;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 142.857% */
+  letter-spacing: 0.5px;
+}
+
+.App-switch-detail-view-more-container {
+  display: inline-flex;
+  height: 28.673px;
+  padding: 4px 16px;
+  margin-left: 93px;
+  margin-top: 49px;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.App-switch-detail-view-more-text {
+  color: var(--typography-light-blue-005-eac, #005eac);
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  /* Buttons & Links/Secondary & Tertiary - Regular & Small */
+  font-family: Honeywell Sans Web;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 142.857% */
+  letter-spacing: 0.5px;
+}
+
+.App-switch-detail-view-more-discription-container {
+  display: flex;
+  width: 369px;
+  height: 34px;
+  padding: 0px 40px;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.App-switch-detail-view-more-discription-text {
+  color: var(--typography-light-secondary-606060, #606060);
+  font-feature-settings: 'clig' off, 'liga' off;
+  /* Forms/State Descriptor */
+  font-family: Honeywell Sans Web;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px; /* 133.333% */
+}
