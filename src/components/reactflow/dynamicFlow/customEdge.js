@@ -21,8 +21,11 @@ export default function CustomEdge(props) {
     targetPosition,
     style = {},
     markerEnd,
+    data,
     ...restProps
   } = props;
+  const {conn_color} = data;
+  console.log('edge',props)
   const [beingHovered, setHoveringState] = useState(false);
   const [edgePath, labelX, labelY] = getSmoothStepPath({
     sourceX,
@@ -47,7 +50,7 @@ export default function CustomEdge(props) {
         onMouseOver={onMouseOver}
         onMouseOut={onMouseOut}
         onClick={onEdgeClick}
-        style={style}
+        style={{...style, strokeWidth:1, stroke: conn_color}}
         className="react-flow__edge-path-selector"
         d={edgePath}
         markerEnd={markerEnd}
@@ -57,7 +60,7 @@ export default function CustomEdge(props) {
         onMouseOver={onMouseOver}
         onMouseOut={onMouseOut}
         onClick={onEdgeClick}
-        style={style}
+        style={{...style, strokeWidth:1, stroke: conn_color}}
         className="react-flow__edge-path"
         d={edgePath}
         markerEnd={markerEnd}
@@ -71,7 +74,7 @@ export default function CustomEdge(props) {
         onMouseOver={onMouseOver}
         onMouseOut={onMouseOut}
         onClick={onEdgeClick}
-        style={{ ...style, strokeWidth: 4 }}
+        style={{ ...style, strokeWidth: 4,stroke: conn_color }}
         className="react-flow__edge-path-selector"
         d={edgePath}
         markerEnd={markerEnd}
@@ -81,7 +84,7 @@ export default function CustomEdge(props) {
         onMouseOver={onMouseOver}
         onMouseOut={onMouseOut}
         onClick={onEdgeClick}
-        style={{ ...style, strokeWidth: 4 }}
+        style={{ ...style, strokeWidth: 4,stroke: conn_color }}
         className="react-flow__edge-path"
         d={edgePath}
         markerEnd={markerEnd}

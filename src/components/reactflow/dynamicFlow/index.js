@@ -8,21 +8,21 @@ import 'reactflow/dist/style.css';
 const data = {
     nodes: [
         // level-1
-        {id: '1', deviceType: 'BACKBONE', level: '1', child: ['1-1', '1-2', '1-3', '1-4']},
-        {id: '2', deviceType: 'BACKBONE', level: '1', child: ['1-1', '1-2', '1-3', '1-4']},
-        // {id: '3', deviceType: 'BACKBONE', level: '1', child: ['1-1', '1-2', '1-3', '1-4']},
-        // {id: '4', deviceType: 'BACKBONE', level: '1', child: ['1-1', '1-2', '1-3', '1-4']},
-        // {id: '5', deviceType: 'BACKBONE', level: '1', child: ['1-1', '1-2', '1-3', '1-4']},
-        // {id: '6', deviceType: 'BACKBONE', level: '1', child: ['1-1', '1-2', '1-3', '1-4']},
+        {id: '1', deviceType: 'BACKBONE', level: '1', child: [{id: '1-1', isConnected: true, conn_color: 'yellow'}, {id:'1-2', isConnected: true, conn_color: 'yellow'}, {id:'1-3', isConnected: true, conn_color: 'yellow'}, {id:'1-4', isConnected: true, conn_color: 'yellow'}]},
+        {id: '2', deviceType: 'BACKBONE', level: '1', child: [{id: '1-1', isConnected: true, conn_color: 'green'}, {id:'1-2', isConnected: true, conn_color: 'green'}, {id:'1-3', isConnected: true, conn_color: 'green'}, {id:'1-4', isConnected: true, conn_color: 'green'}]},
+        // {id: '3', deviceType: 'BACKBONE', level: '1', child: [{id: '1-1', isConnected: true, conn_color: 'yellow'}, {id:'1-2', isConnected: true, conn_color: 'yellow'}, {id:'1-3', isConnected: true, conn_color: 'yellow'}, {id:'1-4', isConnected: true, conn_color: 'yellow'}]},
+        // {id: '4', deviceType: 'BACKBONE', level: '1', child: [{id: '1-1', isConnected: true, conn_color: 'yellow'}, {id:'1-2', isConnected: true, conn_color: 'yellow'}, {id:'1-3', isConnected: true, conn_color: 'yellow'}, {id:'1-4', isConnected: true, conn_color: 'yellow'}]},
+        // {id: '5', deviceType: 'BACKBONE', level: '1', child: [{id: '1-1', isConnected: true, conn_color: 'yellow'}, {id:'1-2', isConnected: true, conn_color: 'yellow'}, {id:'1-3', isConnected: true, conn_color: 'yellow'}, {id:'1-4', isConnected: true, conn_color: 'yellow'}]},
+        // {id: '6', deviceType: 'BACKBONE', level: '1', child: [{id: '1-1', isConnected: true, conn_color: 'yellow'}, {id:'1-2', isConnected: true, conn_color: 'yellow'}, {id:'1-3', isConnected: true, conn_color: 'yellow'}, {id:'1-4', isConnected: true, conn_color: 'yellow'}]},
 
         // level-2
-        {id: '1-1', deviceType: 'SWITCH', level: '2', child: ['1-1-1', '1-1-2', '1-1-3', '1-1-4','1-1-5', '1-1-6', '1-1-7', '1-1-8']},
-        {id: '1-2', deviceType: 'CNM', level: '2', child: ['1-2-1', '1-2-2', '1-2-3', '1-2-4','1-2-5', '1-2-6', '1-2-7', '1-2-8']},
-        {id: '1-3', deviceType: 'FTE', level: '2', child: ['1-3-1', '1-3-2', '1-3-3']},
-        {id: '1-4', deviceType: 'NON-FTE', level: '2', child: ['1-4-1']},
+        {id: '1-1', deviceType: 'SWITCH', level: '2', child: [{id:'1-1-1', isConnected: true, conn_color: 'yellow'}, {id:'1-1-2', isConnected: true, conn_color: 'yellow'}, {id:'1-1-3', isConnected: true, conn_color: 'yellow'}, {id:'1-1-4', isConnected: true, conn_color: 'yellow'},{id:'1-1-5', isConnected: true, conn_color: 'yellow'}, {id:'1-1-6', isConnected: true, conn_color: 'yellow'}, {id:'1-1-7', isConnected: true, conn_color: 'yellow'}, {id:'1-1-8', isConnected: true, conn_color: 'yellow'}]},
+        {id: '1-2', deviceType: 'CNM', level: '2', child: [{id:'1-2-1', isConnected: true, conn_color: 'yellow'}, {id:'1-2-2', isConnected: true, conn_color: 'yellow'}, {id:'1-2-3', isConnected: true, conn_color: 'yellow'}, {id:'1-2-4', isConnected: true, conn_color: 'yellow'},{id:'1-2-5', isConnected: true, conn_color: 'yellow'}, {id:'1-2-6', isConnected: true, conn_color: 'yellow'}, {id:'1-2-7', isConnected: true, conn_color: 'yellow'}, {id:'1-2-8', isConnected: true, conn_color: 'yellow'}]},
+        {id: '1-3', deviceType: 'FTE', level: '2', child: [{id:'1-3-1', isConnected: true, conn_color: 'yellow'}, {id:'1-3-2', isConnected: true, conn_color: 'yellow'}, {id:'1-3-3', isConnected: true, conn_color: 'yellow'}]},
+        {id: '1-4', deviceType: 'NON-FTE', level: '2', child: [{id:'1-4-1', isConnected: true, conn_color: 'yellow'}]},
 
         // level-3
-        {id: '1-1-1', deviceType: 'SWITCH', level: '3', child: ['1-1-1-1', '1-1-1-2']},
+        {id: '1-1-1', deviceType: 'SWITCH', level: '3', child: [{id:'1-1-1-1', isConnected: true, conn_color: 'yellow'}, {id:'1-1-1-2', isConnected: true, conn_color: 'yellow'}]},
         {id: '1-1-2', deviceType: 'SWITCH', level: '3', child: []},
         {id: '1-1-3', deviceType: 'CNM', level: '3', child: []},
         {id: '1-1-4', deviceType: 'SWITCH', level: '3', child: []},
@@ -136,17 +136,18 @@ const generateEdges = (nodes = []) => {
                 node.child.forEach((ch,ch_i)=>{
                     const edgeId = `e-${uuidv4()}`;
                     const t_handle_Id = `t-${node.id}`
-                    const s_handle_Id = `s-${ch}`
+                    const s_handle_Id = `s-${ch.id}`
                     // console.log({edgeId, node: nodeMap[node.id], childNode: nodeMap[ch]})
                     nodeMap[node.id].data.sourceHandles.push(s_handle_Id)
-                    nodeMap[ch].data.targetHandles.push(t_handle_Id)
+                    nodeMap[ch.id].data.targetHandles.push(t_handle_Id)
                     edges.push({
-                        id: `e_s-${node.id}_t-${ch}`,
+                        id: `e_s-${node.id}_t-${ch.id}`,
                         source: node.id,
-                        target: ch,
+                        target: ch.id,
                         sourceHandle: s_handle_Id,
                         targetHandle: t_handle_Id,
                         type: 'customEdge',
+                        data: {conn_color: ch.conn_color},
                     })
                 })
             }
@@ -171,7 +172,7 @@ export default function DynamicFlow() {
         };
         setNodeTypes(nodeTypes);
         const edgeTypes = {
-            'customEdge': CustomEdge,
+            'customEdge': (edgeProps) => <CustomEdge {...edgeProps} />,
           };
         setEdgeTypes(edgeTypes)
     },[])
