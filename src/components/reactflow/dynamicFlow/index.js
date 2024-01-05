@@ -53,7 +53,8 @@ const data = {
     ],
 }
 
-const parseNodes = (nodes = []) => {
+const parseNodes = (nodesData = []) => {
+    const nodes = [...nodesData]
     let x_gap = 60
     let y_gap  = 100
     const levels = {}
@@ -110,8 +111,9 @@ const parseNodes = (nodes = []) => {
 
 }
 
-const generateEdges = (nodes = []) => {
-    // console.log('generateEdges', nodes)
+const generateEdges = (nodesData = []) => {
+    console.log('generateEdges', nodesData)
+    const nodes = [...nodesData]
     const imageMap = {
         'BACKBONE': require('./../icons/SWITCH.png'),
         'SWITCH': require('./../icons/SWITCH.png'),
@@ -156,7 +158,11 @@ const generateEdges = (nodes = []) => {
         }
     })    
     // console.log('...edges', {nodeMap,edges})
-    return {edges, nodes: Object.values(nodeMap)}
+    // return {edges, nodes: Object.values(nodeMap)}
+    /**
+     * el.label is for Aggregated data & el.id is for detailed data
+     */
+    return {edges, nodes: Object.values(nodeMap).map(el => ({...el, data: {...el.data, label: el.label || el.id}}))}
 }
 
 const parseAggregatedData = (d = {}, l = 1) => {
@@ -167,14 +173,14 @@ const parseAggregatedData = (d = {}, l = 1) => {
         let level = _level; 
         if (dataObj && Array.isArray(dataObj.deviceIds) && dataObj.deviceIds.length > 0){
             const {deviceType, childIds = [], child = [], deviceIds, id } = dataObj;
-            
-            nodes.push({id,  deviceIds, deviceType, label: `${deviceType} (${childIds.length})`, data: { label: `${deviceType} (${childIds.length})`,}, level: `${level}`, child: dataObj.child.map(ch => ({id: ch.id, level: `${level + 1}`, })) })
+            const nodeEl = {id,  deviceIds, deviceType, label: `${deviceType} (${deviceIds.length})`, level: `${level}`, child: dataObj.child.map(ch => ({id: ch.id, level: `${level + 1}`, })) }
+            nodes.push(nodeEl)
             if(Array.isArray(dataObj.child)){
                 dataObj.child.forEach((chObj) => {
                     reccursiveFunction(chObj, level+1)
                 })
             }
-            // console.log('......', dataObj, _level)
+            // console.log('......', nodeEl)
         }
     }
 
@@ -182,12 +188,6 @@ const parseAggregatedData = (d = {}, l = 1) => {
     console.log('Nodes--', nodes)
     return nodes
 }
- 
-const initialNodes = [
-  { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
-  { id: '2', position: { x: 0, y: 100 }, data: { label: '2' } },
-];
-const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
  
 export default function DynamicFlow() {
     const [nodeTypesState, setNodeTypes] = useState({});
