@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import ReactFlow, {Controls} from 'reactflow';
 import CustomNode from './customNode';
 import CustomEdge from './customEdge';
+import aggregatedJSON from './Amya.json'
 import 'reactflow/dist/style.css';
 
 const data = {
@@ -104,12 +105,13 @@ const parseNodes = (nodes = []) => {
     })
     nodeData = nodeData.map(n => ({...n, type: 'customNode'}))
     const result = generateEdges(nodeData)
-    console.log('result', result)
+    // console.log('result', result)
     return result
 
 }
 
 const generateEdges = (nodes = []) => {
+    // console.log('generateEdges', nodes)
     const imageMap = {
         'BACKBONE': require('./../icons/SWITCH.png'),
         'SWITCH': require('./../icons/SWITCH.png'),
@@ -147,14 +149,38 @@ const generateEdges = (nodes = []) => {
                         sourceHandle: s_handle_Id,
                         targetHandle: t_handle_Id,
                         type: 'customEdge',
-                        data: {conn_color: ch.conn_color},
+                        data: {conn_color: ch.conn_color || 'red'},
                     })
                 })
             }
         }
     })    
-    console.log('...edges', {nodeMap,edges})
+    // console.log('...edges', {nodeMap,edges})
     return {edges, nodes: Object.values(nodeMap)}
+}
+
+const parseAggregatedData = (d = {}, l = 1) => {
+    const nodes = []
+    
+    function reccursiveFunction(data = {}, _level = l, _id){
+        const dataObj = {...data}
+        let level = _level; 
+        if (dataObj && Array.isArray(dataObj.deviceIds) && dataObj.deviceIds.length > 0){
+            const {deviceType, childIds = [], child = [], deviceIds, id } = dataObj;
+            
+            nodes.push({id,  deviceIds, deviceType, label: `${deviceType} (${childIds.length})`, data: { label: `${deviceType} (${childIds.length})`,}, level: `${level}`, child: dataObj.child.map(ch => ({id: ch.id, level: `${level + 1}`, })) })
+            if(Array.isArray(dataObj.child)){
+                dataObj.child.forEach((chObj) => {
+                    reccursiveFunction(chObj, level+1)
+                })
+            }
+            // console.log('......', dataObj, _level)
+        }
+    }
+
+    reccursiveFunction(d, l)
+    console.log('Nodes--', nodes)
+    return nodes
 }
  
 const initialNodes = [
@@ -176,7 +202,10 @@ export default function DynamicFlow() {
           };
         setEdgeTypes(edgeTypes)
     },[])
-    const {nodes, edges}= parseNodes(data.nodes)
+    // const {nodes, edges}= parseNodes(data.nodes)
+    const {nodes, edges}= parseNodes(parseAggregatedData(aggregatedJSON))
+    console.log('...', {nodes, edges})
+
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
       <ReactFlow 

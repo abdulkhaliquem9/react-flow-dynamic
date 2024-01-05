@@ -25,7 +25,7 @@ export default function CustomEdge(props) {
     ...restProps
   } = props;
   const {conn_color} = data;
-  console.log('edge',props)
+  // console.log('edge',props)
   const [beingHovered, setHoveringState] = useState(false);
   const [edgePath, labelX, labelY] = getSmoothStepPath({
     sourceX,
