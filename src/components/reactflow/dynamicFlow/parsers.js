@@ -13,16 +13,35 @@ export const parseNodes = (nodesData = []) => {
     })
     const levelKeys = Object.keys(levels)
     for(let x = levelKeys.length; x >= 1; x--){
-        // console.log('x', x)
         if(x === 1 || x ==='1'){
+            // console.log('x', x)
             let start_x = 0
+            let level2_x = 0
+            if(levels[x+1]){
+                const temp = [...levels[x+1]]
+                if(temp.length > 0){
+                    temp.sort((a,b)=> {
+                        // console.log('..',a,b)
+                        b.position.x - b.position.x
+                    })
+                    // capture the last (greatest) x co-ordinate in level 1
+                    level2_x = temp[temp.length - 2].position.x
+                }
+                // console.log('x + 1', x+1, temp, level2_x)
+            }
+            start_x = level2_x / 2
+            // console.log('start_x', start_x)
             levels[x].forEach(((el,i) => {
                 if(!levels[x][i].data){
                     levels[x][i].data = {}
                 }
                 levels[x][i].data.label = levels[x][i].id
-                start_x += (levels[x][i].child.length === 0 ? 1 : levels[x][i].child.length) * 10;
-                levels[x][i].position = {x: ((levels[levelKeys.length].length / 2) * x_gap) + (i*100)   , y: parseInt(levels[x][i].level) * y_gap}
+                // start_x += (levels[x][i].child.length === 0 ? 1 : levels[x][i].child.length) * 10;
+                levels[x][i].position = {
+                    // x: ((levels[levelKeys.length].length / 2) * x_gap) + (i*100), 
+                    x: start_x,
+                    y: parseInt(levels[x][i].level) * y_gap
+                }
             }))
         }
         if(levels[x-1]){
@@ -38,7 +57,7 @@ export const parseNodes = (nodesData = []) => {
                         if(!levels[x][ni].position){
                             levels[x][ni].position = {}
                         }
-                        start_x +=  ((levels[x][ni].child.length === 0 ? 1 : levels[x][ni].child.length)) * x_gap
+                        start_x +=  ((levels[x][ni].child.length === 0 ? 2 : levels[x][ni].child.length)) * x_gap
                         levels[x][ni].data.label = levels[x][ni].id
                         levels[x][ni].position.x = start_x;
                         levels[x][ni].position.y = parseInt(levels[x][ni].level) * y_gap;
@@ -59,7 +78,7 @@ export const parseNodes = (nodesData = []) => {
 }
 
 export const generateEdges = (nodesData = []) => {
-    console.log('generateEdges', nodesData)
+    // console.log('generateEdges', nodesData)
     const nodes = [...nodesData]
     const imageMap = {
         'BACKBONE': require('./../icons/SWITCH.png'),

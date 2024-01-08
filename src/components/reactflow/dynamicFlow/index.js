@@ -4,7 +4,7 @@ import CustomNode from './customNode';
 import CustomEdge from './customEdge';
 import aggregatedJSON from './Amya.json'
 import {parseNodes, parseAggregatedData}  from './parsers'
-// import { sampleNodeData } from './sampleData';
+import { sampleNodeData } from './sampleData';
 import 'reactflow/dist/style.css';
  
 export default function DynamicFlow() {
@@ -20,8 +20,8 @@ export default function DynamicFlow() {
           };
         setEdgeTypes(edgeTypes)
     },[])
-    // const {nodes, edges}= parseNodes(sampleNodeData.nodes)
-    const {nodes, edges}= parseNodes(parseAggregatedData(aggregatedJSON))
+    const {nodes, edges}= parseNodes(sampleNodeData.nodes)
+    // const {nodes, edges}= parseNodes(parseAggregatedData(aggregatedJSON))
     console.log('...', {nodes, edges})
 
   return (
@@ -31,7 +31,7 @@ export default function DynamicFlow() {
       nodeTypes={nodeTypesState}
       nodes={nodes} 
       edges={edges}
-      defaultViewport={{x:100, y: 100, zoom: 0.8}}
+      defaultViewport={{x:0, y: 0, zoom: 0.1}}
       >
         <Controls />
       </ReactFlow>
