@@ -50,7 +50,7 @@ export default function CustomEdge(props) {
         onMouseOver={onMouseOver}
         onMouseOut={onMouseOut}
         onClick={onEdgeClick}
-        style={{...style, strokeWidth:1, stroke: conn_color}}
+        style={{strokeWidth: 1, ...style, stroke: conn_color}}
         className="react-flow__edge-path-selector"
         d={edgePath}
         markerEnd={markerEnd}
@@ -60,7 +60,7 @@ export default function CustomEdge(props) {
         onMouseOver={onMouseOver}
         onMouseOut={onMouseOut}
         onClick={onEdgeClick}
-        style={{...style, strokeWidth:1, stroke: conn_color}}
+        style={{strokeWidth: 1, ...style, stroke: conn_color}}
         className="react-flow__edge-path"
         d={edgePath}
         markerEnd={markerEnd}
@@ -74,7 +74,7 @@ export default function CustomEdge(props) {
         onMouseOver={onMouseOver}
         onMouseOut={onMouseOut}
         onClick={onEdgeClick}
-        style={{ ...style, strokeWidth: 4,stroke: conn_color }}
+        style={{ strokeWidth: 4, ...style,stroke: conn_color }}
         className="react-flow__edge-path-selector"
         d={edgePath}
         markerEnd={markerEnd}
@@ -84,7 +84,7 @@ export default function CustomEdge(props) {
         onMouseOver={onMouseOver}
         onMouseOut={onMouseOut}
         onClick={onEdgeClick}
-        style={{ ...style, strokeWidth: 4,stroke: conn_color }}
+        style={{ strokeWidth: 4, ...style,stroke: conn_color }}
         className="react-flow__edge-path"
         d={edgePath}
         markerEnd={markerEnd}

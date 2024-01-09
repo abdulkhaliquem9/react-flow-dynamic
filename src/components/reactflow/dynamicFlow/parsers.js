@@ -117,7 +117,7 @@ export const generateEdges = (nodesData = []) => {
                         sourceHandle: s_handle_Id,
                         targetHandle: t_handle_Id,
                         type: 'customEdge',
-                        data: {conn_color: ch.conn_color || 'red'},
+                        data: {conn_color: ch.conn_color || 'gray'},
                     })
                 })
             }
