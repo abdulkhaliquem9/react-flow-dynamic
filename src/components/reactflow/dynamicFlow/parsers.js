@@ -22,7 +22,7 @@ export const parseNodes = (nodesData = []) => {
                 if(temp.length > 0){
                     temp.sort((a,b)=> {
                         // console.log('..',a,b)
-                        b.position.x - b.position.x
+                        return b.position.x - b.position.x
                     })
                     // capture the last (greatest) x co-ordinate in level 1
                     level2_x = temp[temp.length - 2].position.x
