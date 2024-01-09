@@ -57,7 +57,7 @@ export const parseNodes = (nodesData = []) => {
                         if(!levels[x][ni].position){
                             levels[x][ni].position = {}
                         }
-                        start_x +=  ((levels[x][ni].child.length === 0 ? 2 : levels[x][ni].child.length)) * x_gap
+                        start_x +=  ((levels[x][ni].child.length <= 1 ? 2 : levels[x][ni].child.length)) * x_gap
                         levels[x][ni].data.label = levels[x][ni].id
                         levels[x][ni].position.x = start_x;
                         levels[x][ni].position.y = parseInt(levels[x][ni].level) * y_gap;
