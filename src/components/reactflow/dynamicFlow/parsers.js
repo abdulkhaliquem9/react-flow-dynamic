@@ -154,3 +154,30 @@ export const parseAggregatedData = (d = {}, l = 1) => {
     console.log('Nodes--', nodes)
     return nodes
 }
+
+export const parseFacePlateData = (data) => {
+    console.log('parseFacePlateData', data)
+    const facePlates = []
+    if(Array.isArray(data) && data.length > 0){
+        data.forEach((el, i) => {
+            if(Array.isArray(el) && el.length > 0){
+                const facePlateData = []
+                el.forEach((dataObj, dataObjIndex) => {
+                    // The first object in the array will be the parent and the rest are childs, so the arraay should have atleast 2 objeacts i.e, 1 parent and child
+                    const [parent, ...child] = dataObj
+                    const {device_id, sub_device_type} = parent
+                    facePlateData.push({id: device_id, deviceType: sub_device_type, level: '1', child: child.map((ch)=>({id: ch.device_id, isConnected: true, conn_color: dataObjIndex === 0 ? 'yellow':'green'}))})
+                    child.forEach((ch)=> {
+                        facePlateData.push({id: ch.device_id, deviceType: ch.sub_device_type, level: '2', child:[]})
+                    })
+                    // console.log(i, {dataObj, parent, child})
+                })
+                facePlates.push(facePlateData)
+                // facePlateData.push(facePlateDataObj)
+            }
+        })
+    }
+    // return facePlates
+    return facePlates.map(d => parseNodes(d))
+
+}

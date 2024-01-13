@@ -8,7 +8,7 @@ import './App.css';
 
 function App() {
   return (
-    <div style={{ width: '100%', height: '100%' }}>
+    <div style={{ width: '100vw', height: '100vh', display: 'flex', flexWrap: 'wrap' }}>
       {/* <AggregatedView /> */}
       <DynamicFlow />
     </div>

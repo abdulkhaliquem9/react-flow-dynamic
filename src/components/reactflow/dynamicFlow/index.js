@@ -1,81 +1,77 @@
-import React, {useEffect, useState} from 'react';
-import ReactFlow, {Controls} from 'reactflow';
-import CustomNode from './customNode';
-import CustomEdge from './customEdge';
+import { useEffect, useState } from 'react'
+import DynamicView from "./dynamicFlow";
+import FacePlateView from './facePlateView'
+import faceplateData from './facetPlate'
 import aggregatedJSON from './Amya.json'
-import {parseNodes, parseAggregatedData}  from './parsers'
+import { parseNodes, parseAggregatedData, parseFacePlateData } from './parsers'
 import { sampleNodeData } from './sampleData';
-import 'reactflow/dist/style.css';
- 
-export default function DynamicFlow() {
+
+const AGGREGATED_VIEW = 'aggregatedView';
+const FACEPLATE_VIEW = 'faceplateView';
+const DETAILED_VIEW = 'detailedView'
+
+function getAggregatedData () {
+    const response = aggregatedJSON
+    const parsedData = parseNodes(parseAggregatedData(response));
+    return parsedData
+}
+function getFacePlateViewData (ids=[]) {
+    console.log('getFacePlate for ids', ids)
+    if(Array.isArray){
+        console.log('getFacePlate ', faceplateData)
+        const response = faceplateData
+        const parsedData = parseFacePlateData(response)
+        console.log('parsed faceplate data', parsedData)
+        return parsedData
+    }
+}
+
+export default (props) => {
+    const [isLoading, setLoader] = useState(false)
     const [chartData, setChartData] = useState({})
-    const [nodeTypesState, setNodeTypes] = useState({});
-    const [edgeTypesState, setEdgeTypes] = useState({});
-    useEffect(() => {
-        const nodeTypes = {
-            'customNode': (nodeProps) => <CustomNode {...nodeProps} />,
-        };
-        setNodeTypes(nodeTypes);
-        const edgeTypes = {
-            'customEdge': (edgeProps) => <CustomEdge {...edgeProps} />,
-          };
-        setEdgeTypes(edgeTypes)
+    const init = async () => {
+        try {
+            setLoader(true)
+            const data = getAggregatedData();
+            
+            await setChartData({viewType: AGGREGATED_VIEW,  data})
+            setTimeout(() => {
+                setLoader(false)
+            }, 2000);
 
-        setChartData(parseNodes(sampleNodeData.nodes))
-        // setChartData(parseNodes(parseAggregatedData(aggregatedJSON)))
-    },[])
+            // await setChartData(parseNodes(sampleNodeData.nodes))
+        } catch (error) {
 
-    const onNodeMouseEnter = (event, node) => {
-      const { id, data } = node;
-      const {nodes, edges} = chartData
-      const highlightedEdges = edges.map((edge) => {
-        if (edge.source === id || edge.target === id) {
-          return { ...edge, style: { ...edge.style, strokeWidth: 4 } };
-        } else {
-          return edge;
         }
-      });
-      // console.log('onMouseOverNode...', { event, node, chartData, highlightedEdges }, '...');
-      setChartData(prev => ({
-        ...prev,
-        edges: highlightedEdges,
-        // [data.chart]: { ...charts[data.chart], edges: highlightedEdges },
-      }) );
+    }
+    useEffect(() => {
+        init()
+    }, [])
+    const handleNodeClick = async (event, node) => {
+        const {deviceIds = []} = node
+        console.log('click node', {event, node, deviceIds})
+        if(chartData.viewType === AGGREGATED_VIEW){
+            setLoader(true)
+            const data = await getFacePlateViewData(deviceIds)
+            await setChartData({viewType: FACEPLATE_VIEW,  data})
+            setTimeout(() => {
+                setLoader(false)
+            }, 2000);
+        }
     };
-
-    const onNodeMouseLeave = (event, node) => {
-      const {nodes, edges} = chartData
-      const unhighlightedEdges = edges.map((edge) => ({
-        ...edge,
-        style: { ...edge.style, strokeWidth: 2 },
-      }))
-      // console.log('onMouseOut of node...', event, node, '...', unhighlightedEdges);
-      // setEdges(edges.map(edge => ({...edge, style: {...edge.style, strokeWidth: 2}})))
-      setChartData(prev => ({
-        ...prev,
-        edges: unhighlightedEdges,
-        // [data.chart]: { ...charts[data.chart], edges: highlightedEdges },
-      }) );
-    };
-
-    // const {nodes, edges}= parseNodes(sampleNodeData.nodes)
-    // const {nodes, edges}= parseNodes(parseAggregatedData(aggregatedJSON))
-    const {nodes, edges} = chartData
-    console.log('...', {nodes, edges})
-
-  return (
-    <div style={{ width: '100vw', height: '100vh' }}>
-      <ReactFlow 
-      edgeTypes={edgeTypesState}
-      nodeTypes={nodeTypesState}
-      nodes={nodes} 
-      edges={edges}
-      defaultViewport={{x:0, y: 0, zoom: 0.1}}
-      onNodeMouseEnter={onNodeMouseEnter}
-      onNodeMouseLeave={onNodeMouseLeave}
-      >
-        <Controls />
-      </ReactFlow>
-    </div>
-  );
+    if(isLoading){
+        return null
+    }
+    if (chartData && chartData.viewType === AGGREGATED_VIEW) {
+        return (
+            <DynamicView viewType={chartData.viewType} data={chartData} onNodeClick={handleNodeClick}/>
+        )
+    } else if (chartData && chartData.viewType === FACEPLATE_VIEW) {
+        return (
+            <FacePlateView viewType={chartData.viewType} data={chartData} onNodeClick={handleNodeClick}/>
+        )
+    }
+    else {
+        return <div>Loading...</div>
+    }
 }
