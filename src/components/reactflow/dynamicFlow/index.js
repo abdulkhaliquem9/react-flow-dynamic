@@ -37,7 +37,7 @@ export default (props) => {
             await setChartData({viewType: AGGREGATED_VIEW,  data})
             setTimeout(() => {
                 setLoader(false)
-            }, 2000);
+            }, 100);
 
             // await setChartData(parseNodes(sampleNodeData.nodes))
         } catch (error) {
@@ -56,7 +56,7 @@ export default (props) => {
             await setChartData({viewType: FACEPLATE_VIEW,  data})
             setTimeout(() => {
                 setLoader(false)
-            }, 2000);
+            }, 100);
         }
     };
     if(isLoading){

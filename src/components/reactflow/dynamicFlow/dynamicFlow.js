@@ -83,7 +83,7 @@ export default function DynamicFlow(props) {
       onNodeMouseEnter={enableMouseHover ? onNodeMouseEnter : null}
       onNodeMouseLeave={enableMouseHover ? onNodeMouseLeave : null}
       onNodeClick={onNodeClick}
-      onInit = {(reactFlowInstance) => console.log('flow loaded:', reactFlowInstance)}
+      // onInit = {(reactFlowInstance) => console.log('flow loaded:', reactFlowInstance)}
 
       >
         <Controls />

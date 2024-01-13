@@ -4,10 +4,6 @@ import CustomNode from './customNode';
 import CustomEdge from './customEdge';
 import './facePlateView.css'
 
-const minimapStyle = {
-    height: 120,
-  };
-
 function FacePlateView(props) {
     const { data = {}, enableMouseHover = true, onNodeClick } = props
     // const { viewType, data: chartData = [] } = data
@@ -55,13 +51,13 @@ function FacePlateView(props) {
                                 style={{ backgroundColor: 'white' }}
                                 fitView
                                 attributionPosition="top-right"
-                                onInit = {(reactFlowInstance) => console.log('flow loaded:', reactFlowInstance)}
-                                defaultViewport={{ x: 0, y: 0, zoom: 0.5 }}
+                                defaultViewport={{ x: 0, y: 0, zoom: 0.1 }}
+                                // onInit = {(reactFlowInstance) => console.log('flow loaded:', reactFlowInstance)}
                             // onNodeMouseEnter={enableMouseHover ? onNodeMouseEnter : null}
                             // onNodeMouseLeave={enableMouseHover ? onNodeMouseLeave : null}
                             // onNodeClick={onNodeClick}
                             >
-                                <MiniMap style={minimapStyle} zoomable pannable />
+                                {/* <MiniMap style={minimapStyle} zoomable pannable /> */}
                             </ReactFlow>
                             </div>
                         })
