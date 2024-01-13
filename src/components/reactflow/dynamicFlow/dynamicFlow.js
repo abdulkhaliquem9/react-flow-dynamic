@@ -83,6 +83,7 @@ export default function DynamicFlow(props) {
       onNodeMouseEnter={enableMouseHover ? onNodeMouseEnter : null}
       onNodeMouseLeave={enableMouseHover ? onNodeMouseLeave : null}
       onNodeClick={onNodeClick}
+      fitView
       // onInit = {(reactFlowInstance) => console.log('flow loaded:', reactFlowInstance)}
 
       >

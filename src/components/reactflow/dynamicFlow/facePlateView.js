@@ -52,6 +52,7 @@ function FacePlateView(props) {
                                 fitView
                                 attributionPosition="top-right"
                                 defaultViewport={{ x: 0, y: 0, zoom: 0.1 }}
+                                panOnDrag={false}
                                 // onInit = {(reactFlowInstance) => console.log('flow loaded:', reactFlowInstance)}
                             // onNodeMouseEnter={enableMouseHover ? onNodeMouseEnter : null}
                             // onNodeMouseLeave={enableMouseHover ? onNodeMouseLeave : null}

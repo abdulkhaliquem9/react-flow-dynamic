@@ -19,4 +19,8 @@
     margin: 5px;
     height: 50%;
   }
+
+  .chart-container a {
+    display: none;
+  }
   
