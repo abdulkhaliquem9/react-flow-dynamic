@@ -25,9 +25,9 @@ export const parseNodes = (nodesData = []) => {
                         return b.position.x - b.position.x
                     })
                     // capture the last (greatest) x co-ordinate in level 1
-                    level2_x = temp[temp.length - 2].position.x
+                    level2_x =  ((temp[0].position.x + temp[temp.length - 2].position.x) / 2)
                 }
-                // console.log('x + 1', x+1, temp, level2_x)
+                console.log('x + 1', x+1, temp, level2_x, '---', (temp[0].position.x  + ((temp[0].position.x + temp[temp.length - 2].position.x) / 2)))
             }
             start_x = level2_x / 2
             // console.log('start_x', start_x)
@@ -39,7 +39,7 @@ export const parseNodes = (nodesData = []) => {
                 // start_x += (levels[x][i].child.length === 0 ? 1 : levels[x][i].child.length) * 10;
                 levels[x][i].position = {
                     // x: ((levels[levelKeys.length].length / 2) * x_gap) + (i*100), 
-                    x: start_x,
+                    x: start_x + (i * 100),
                     y: parseInt(levels[x][i].level) * y_gap
                 }
             }))
@@ -168,7 +168,15 @@ export const parseFacePlateData = (data) => {
                     const {device_id, sub_device_type} = parent
                     facePlateData.push({id: `${device_id}`, deviceType: sub_device_type, level: '1', child: child.map((ch)=>({id: `${ch.device_id}`, isConnected: true, conn_color: dataObjIndex === 0 ? 'yellow':'green'}))})
                     child.forEach((ch)=> {
-                        facePlateData.push({id: `${ch.device_id}`, deviceType: ch.sub_device_type, level: '2', child:[]})
+                        const foundIndex = facePlateData.findIndex(el => {
+                            // console.log('finding', el, ch)
+                            return el.id ===`${ch.device_id}`
+                        })
+                        console.log(`found Index of ${ch.device_id} at`, foundIndex)
+                        //avoid duplicate pushing of node
+                        if(foundIndex < 0){
+                            facePlateData.push({id: `${ch.device_id}`, deviceType: ch.sub_device_type, level: '2', child:[]})
+                        }
                     })
                     // console.log(i, {dataObj, parent, child})
                 })
