@@ -25,11 +25,19 @@ export const parseNodes = (nodesData = []) => {
                         return b.position.x - b.position.x
                     })
                     // capture the last (greatest) x co-ordinate in level 1
-                    level2_x =  ((temp[0].position.x + temp[temp.length - 2].position.x) / 2)
+                    if(temp.length > 2){
+                        level2_x =  ((temp[0].position.x + temp[temp.length - 1].position.x) / 2)
+                    }else if(temp.length ===2){
+                        level2_x =  ((temp[0].position.x + temp[1].position.x) / 2)
+                    }else{
+                        // temp.length === 1
+                        level2_x =  temp[0].position.x
+                    }
+                    // level2_x =  ((temp[0].position.x + temp[temp.length - 2].position.x) / 2)
                 }
-                console.log('x + 1', x+1, temp, level2_x, '---', (temp[0].position.x  + ((temp[0].position.x + temp[temp.length - 2].position.x) / 2)))
+                // console.log('x + 1', x+1, temp, level2_x, '---', (temp[0].position.x  + ((temp[0].position.x + temp[temp.length - 2].position.x) / 2)))
             }
-            start_x = level2_x / 2
+            start_x = level2_x
             // console.log('start_x', start_x)
             levels[x].forEach(((el,i) => {
                 if(!levels[x][i].data){

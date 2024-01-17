@@ -39,9 +39,9 @@ export default (props) => {
                 setLoader(false)
             }, 100);
 
-            // await setChartData(parseNodes(sampleNodeData.nodes))
+            // await setChartData({viewType: AGGREGATED_VIEW, data:parseNodes(sampleNodeData.nodes)})
         } catch (error) {
-
+            console.log('init error',error)
         }
     }
     useEffect(() => {
