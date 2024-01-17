@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import imageMap from './imageMap';
 
 export const parseNodes = (nodesData = []) => {
     const nodes = [...nodesData]
@@ -88,14 +89,14 @@ export const parseNodes = (nodesData = []) => {
 export const generateEdges = (nodesData = []) => {
     // console.log('generateEdges', nodesData)
     const nodes = [...nodesData]
-    const imageMap = {
-        'BACKBONE': require('./../icons/SWITCH.png'),
-        'SWITCH': require('./../icons/SWITCH.png'),
-        'SERVER': require('./../icons/SWITCH.png'),
-        'CNM': require('./../icons/SWITCH.png'),
-        'FTE': require('./../icons/SWITCH.png'),
-        'NON-FTE': require('./../icons/SWITCH.png'),
-    }
+    // const imageMap = {
+    //     'BACKBONE': require('./../icons/SWITCH.png'),
+    //     'SWITCH': require('./../icons/SWITCH.png'),
+    //     'SERVER': require('./../icons/SWITCH.png'),
+    //     'CNM': require('./../icons/SWITCH.png'),
+    //     'FTE': require('./../icons/SWITCH.png'),
+    //     'NON-FTE': require('./../icons/SWITCH.png'),
+    // }
     const edges = []
     const nodeMap = {}
     nodes.forEach((node,i) => {
