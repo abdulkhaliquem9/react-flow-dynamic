@@ -1,6 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
 import imageMap from './imageMap';
 
+const BACKBONE_CONN_COLOR = 'red'
+
 export const parseNodes = (nodesData = []) => {
   const nodes = [...nodesData];
   let x_gap = 60;
@@ -105,9 +107,11 @@ export const generateEdges = (nodesData = []) => {
   const nodeMap = {};
   nodes.forEach((node, i) => {
     if (node.id) {
+      // console.log('node',node)
       const data = { ...node.data, sourceHandles: [], targetHandles: [] };
       if (imageMap[node.deviceType]) {
         data.imgSrc = imageMap[node.deviceType];
+        data.level = node.level
       }
       nodeMap[node.id] = { ...node, edges: [], data };
     }
@@ -118,8 +122,8 @@ export const generateEdges = (nodesData = []) => {
       if (Array.isArray(node.child)) {
         node.child.forEach((ch, ch_i) => {
           const edgeId = `e-${uuidv4()}`;
-          const t_handle_Id = `t-${node.id}`;
-          const s_handle_Id = `s-${ch.id}`;
+          const t_handle_Id = ch.conn_color === BACKBONE_CONN_COLOR ? `t-right-${node.id}` : `t-${node.id}`;
+          const s_handle_Id = ch.conn_color === BACKBONE_CONN_COLOR ? `s-left-${ch.id}` : `s-${ch.id}`;
           // console.log({edgeId, node: nodeMap[node.id], childNode: nodeMap[ch]})
           nodeMap[node.id].data.sourceHandles.push(s_handle_Id);
           nodeMap[ch.id].data.targetHandles.push(t_handle_Id);
@@ -189,7 +193,7 @@ export const parseAggregatedData = (d = {}, l = 1) => {
 };
 
 export const parseFacePlateData = (data) => {
-  console.log('parseFacePlateData', data);
+  console.log('parseFacePlateData ---', data);
   const facePlates = [];
   if (Array.isArray(data) && data.length > 0) {
     data.forEach((el, i) => {
@@ -199,11 +203,13 @@ export const parseFacePlateData = (data) => {
           // The first object in the array will be the parent and the rest are childs, so the arraay should have atleast 2 objeacts i.e, 1 parent and child
           const [parent, ...child] = dataObj;
           const { device_id, sub_device_type } = parent;
+
+          // first array
           facePlateData.push({
             id: `${device_id}`,
             deviceType: sub_device_type,
             level: '1',
-            child: child.map((ch) => ({
+            child: (child || []).map((ch) => ({
               id: `${ch.device_id}`,
               isConnected: true,
               conn_color: dataObjIndex === 0 ? '#ffc300' : '#1EDE38',
@@ -226,6 +232,16 @@ export const parseFacePlateData = (data) => {
             }
           });
           // console.log(i, {dataObj, parent, child})
+
+          //second array -> If second backbone data exist then make the first child (backbone) of second array as child of first array backbone
+          if(dataObjIndex === 0 && data[i] && Array.isArray(data[i][1]) && data[i][1][0]){
+            // console.log('check second backbone exist', data[i][1][0], facePlateData)
+            const {device_id} = data[i][1][0]
+            if(device_id){
+              facePlateData[0].child.push({id: `${device_id}`, conn_color: BACKBONE_CONN_COLOR, isConnected: true})
+            }
+          }
+
         });
         facePlates.push(facePlateData);
         // facePlateData.push(facePlateDataObj)
