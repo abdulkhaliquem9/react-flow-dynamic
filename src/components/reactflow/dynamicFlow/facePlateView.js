@@ -69,7 +69,7 @@ function FacePlateView(props) {
     }
 
 
-    console.log('FacePlateView', charstData)
+    // console.log('FacePlateView', charstData)
     if (showChart && charstData && charstData.data && Array.isArray(charstData.data)) {
         return (
             

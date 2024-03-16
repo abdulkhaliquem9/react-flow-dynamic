@@ -1,14 +1,16 @@
 import { v4 as uuidv4 } from 'uuid';
 import imageMap from './imageMap';
+import facePlateData from './facetPlate'
 
 const BACKBONE_CONN_COLOR = 'red'
 
-export const parseNodes = (nodesData = []) => {
+export const parseNodes = async (nodesData = []) => {
+  // console.log('parseNodes', nodesData)
   const nodes = [...nodesData];
   let x_gap = 60;
   let y_gap = 150;
   const levels = {};
-  nodes.forEach((node, i) => {
+  await nodes.forEach((node, i) => {
     if (!levels[node.level]) {
       levels[node.level] = [];
     }
@@ -37,7 +39,7 @@ export const parseNodes = (nodesData = []) => {
             // temp.length===1
             level2_x = temp[0].position.x;
           }
-          console.log('temp', temp, level2_x);
+          // console.log('temp', temp, level2_x);
           // level2_x =  temp.length > 2 ? ((temp[0].position.x + temp[temp.length - 2].position.x) / 2) :  (temp.length ===1 ? temp[0].position.x : ((temp[0].position.x +temp[1].position.x )/2))
         }
         // console.log('x + 1', x+1, temp, level2_x, '---', (temp[0].position.x  + ((temp[0].position.x + temp[temp.length - 2].position.x) / 2)))
@@ -154,7 +156,7 @@ export const generateEdges = (nodesData = []) => {
   };
 };
 
-export const parseAggregatedData = (d = {}, l = 1) => {
+export const parseAggregatedData = async (d = {}, l = 1) => {
   const nodes = [];
 
   function reccursiveFunction(data = {}, _level = l, _id) {
@@ -165,11 +167,12 @@ export const parseAggregatedData = (d = {}, l = 1) => {
       Array.isArray(dataObj.deviceIds) &&
       dataObj.deviceIds.length > 0
     ) {
-      const { deviceType, childIds = [], child = [], deviceIds, id } = dataObj;
+      const { deviceType, childIds = [], child = [], deviceIds, id, category = "unknown" } = dataObj;
       const nodeEl = {
         id,
         deviceIds,
         deviceType,
+        category,
         label: `${deviceType} (${deviceIds.length})`,
         level: `${level}`,
         child: dataObj.child.map((ch) => ({
@@ -187,10 +190,53 @@ export const parseAggregatedData = (d = {}, l = 1) => {
     }
   }
 
-  reccursiveFunction(d, l);
-  console.log('Nodes--', nodes);
-  return nodes;
+  await reccursiveFunction(d, l);
+  await console.log('Nodes--', {nodes});
+  const nodesData = await fetchAllAggregatedFacePlates(nodes)
+  console.log('---Nodes--', { nodesData});
+  return nodesData;
 };
+
+const getFacePlateData = async (nodeId, deviceIds = []) => {
+  // console.log('getFacePlateData', nodeId, deviceIds)
+  return facePlateData
+}
+
+const generateFacePlatesList = async (facePlates = []) => {
+  // console.log('faceplate list', facePlates)
+  const facePlateList = []
+  await facePlates.forEach((faceplate = []) => {
+    // faceplate.forEach(fp=> {
+    //   facePlateList.push({...fp, faceplate})
+    // })
+    if(faceplate[0]){
+      if(faceplate[0][0]){
+        facePlateList.push({...faceplate[0][0], faceplate})
+      }
+    }
+    if(faceplate[1]){
+      if(faceplate[1][0]){
+        facePlateList.push({...faceplate[1][0], faceplate})
+      }
+    }
+    
+  })
+  return facePlateList
+}
+
+const fetchAllAggregatedFacePlates = async (nodes = []) => {
+  const nodesData = [...nodes]
+  await nodesData.forEach(async (node,nodeIndex) => {
+    // console.log('node', node)
+    const facePlates = await getFacePlateData(node.id, node.deviceIds)
+    // const nodeIndex = nodes.findIndex(n=> n.id === node.id)
+    nodesData[nodeIndex].facePlates = await facePlates
+    const facePlateList = await generateFacePlatesList(facePlates)
+    nodesData[nodeIndex].facePlateList = await facePlateList
+  })
+
+  return nodesData
+}
 
 export const parseFacePlateData = (data) => {
   console.log('parseFacePlateData ---', data);

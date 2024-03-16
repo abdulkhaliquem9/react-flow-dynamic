@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import DynamicView from "./dynamicFlow";
 import FacePlateView from './facePlateView'
 import faceplateData from './facetPlate'
-import aggregatedJSON from './Amya.json'
+import aggregatedJSON from './aggregated.json'
 import { parseNodes, parseAggregatedData, parseFacePlateData } from './parsers'
 import { sampleNodeData } from './sampleData';
 
@@ -10,9 +10,10 @@ const AGGREGATED_VIEW = 'aggregatedView';
 const FACEPLATE_VIEW = 'faceplateView';
 const DETAILED_VIEW = 'detailedView'
 
-function getAggregatedData () {
-    const response = aggregatedJSON
-    const parsedData = parseNodes(parseAggregatedData(response));
+async function getAggregatedData () {
+    const response = await aggregatedJSON
+    const result = await parseAggregatedData(response);
+    const parsedData = await parseNodes(result);
     return parsedData
 }
 function getFacePlateViewData (ids=[]) {
@@ -32,9 +33,13 @@ export default (props) => {
     const init = async () => {
         try {
             setLoader(true)
-            const data = getAggregatedData();
-            
+            const data = await getAggregatedData();
+            // console.log('###', data)
             await setChartData({viewType: AGGREGATED_VIEW,  data})
+
+            // const data = await getFacePlateViewData([])
+            // await setChartData({viewType: FACEPLATE_VIEW,  data})
+
             setTimeout(() => {
                 setLoader(false)
             }, 100);
