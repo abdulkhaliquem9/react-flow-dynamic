@@ -1,16 +1,19 @@
 import { v4 as uuidv4 } from 'uuid';
 import imageMap from './imageMap';
-import facePlateData from './facetPlate'
+// import {
+//   fetchAllAggregatedFacePlates,
+//   generateFacePlatesList,
+//   getFacePlateData,
+// } from './burgerParsing';
 
-const BACKBONE_CONN_COLOR = 'red'
+const BACKBONE_CONN_COLOR = 'brown';
 
-export const parseNodes = async (nodesData = []) => {
-  // console.log('parseNodes', nodesData)
+export const parseNodes = (nodesData = []) => {
   const nodes = [...nodesData];
   let x_gap = 60;
   let y_gap = 150;
   const levels = {};
-  await nodes.forEach((node, i) => {
+  nodes.forEach((node, i) => {
     if (!levels[node.level]) {
       levels[node.level] = [];
     }
@@ -113,7 +116,7 @@ export const generateEdges = (nodesData = []) => {
       const data = { ...node.data, sourceHandles: [], targetHandles: [] };
       if (imageMap[node.deviceType]) {
         data.imgSrc = imageMap[node.deviceType];
-        data.level = node.level
+        data.level = node.level;
       }
       nodeMap[node.id] = { ...node, edges: [], data };
     }
@@ -124,8 +127,14 @@ export const generateEdges = (nodesData = []) => {
       if (Array.isArray(node.child)) {
         node.child.forEach((ch, ch_i) => {
           const edgeId = `e-${uuidv4()}`;
-          const t_handle_Id = ch.conn_color === BACKBONE_CONN_COLOR ? `t-right-${node.id}` : `t-${node.id}`;
-          const s_handle_Id = ch.conn_color === BACKBONE_CONN_COLOR ? `s-left-${ch.id}` : `s-${ch.id}`;
+          const t_handle_Id =
+            ch.conn_color === BACKBONE_CONN_COLOR
+              ? `t-right-${node.id}`
+              : `t-${node.id}`;
+          const s_handle_Id =
+            ch.conn_color === BACKBONE_CONN_COLOR
+              ? `s-left-${ch.id}`
+              : `s-${ch.id}`;
           // console.log({edgeId, node: nodeMap[node.id], childNode: nodeMap[ch]})
           nodeMap[node.id].data.sourceHandles.push(s_handle_Id);
           nodeMap[ch.id].data.targetHandles.push(t_handle_Id);
@@ -156,7 +165,11 @@ export const generateEdges = (nodesData = []) => {
   };
 };
 
-export const parseAggregatedData = async (d = {}, l = 1) => {
+export const parseAggregatedData = async ({
+  aggregateViewData: d = {},
+  l = 1,
+  setBurgerMenuRawData,
+}) => {
   const nodes = [];
 
   function reccursiveFunction(data = {}, _level = l, _id) {
@@ -167,12 +180,11 @@ export const parseAggregatedData = async (d = {}, l = 1) => {
       Array.isArray(dataObj.deviceIds) &&
       dataObj.deviceIds.length > 0
     ) {
-      const { deviceType, childIds = [], child = [], deviceIds, id, category = "unknown" } = dataObj;
+      const { deviceType, childIds = [], child = [], deviceIds, id } = dataObj;
       const nodeEl = {
         id,
         deviceIds,
         deviceType,
-        category,
         label: `${deviceType} (${deviceIds.length})`,
         level: `${level}`,
         child: dataObj.child.map((ch) => ({
@@ -190,53 +202,14 @@ export const parseAggregatedData = async (d = {}, l = 1) => {
     }
   }
 
-  await reccursiveFunction(d, l);
-  await console.log('Nodes--', {nodes});
-  const nodesData = await fetchAllAggregatedFacePlates(nodes)
-  console.log('---Nodes--', { nodesData});
-  return nodesData;
+  reccursiveFunction(d, l);
+  // await console.log('Nodes--', { nodes });
+  // const nodesData = await fetchAllAggregatedFacePlates(nodes)
+  // setBurgerMenuRawData(nodesData || [])
+  // console.log('---Burger Ui parsing--', { nodesData});
+  // return nodesData;
+  return nodes;
 };
-
-const getFacePlateData = async (nodeId, deviceIds = []) => {
-  // console.log('getFacePlateData', nodeId, deviceIds)
-  return facePlateData
-}
-
-const generateFacePlatesList = async (facePlates = []) => {
-  // console.log('faceplate list', facePlates)
-  const facePlateList = []
-  await facePlates.forEach((faceplate = []) => {
-    // faceplate.forEach(fp=> {
-    //   facePlateList.push({...fp, faceplate})
-    // })
-    if(faceplate[0]){
-      if(faceplate[0][0]){
-        facePlateList.push({...faceplate[0][0], faceplate})
-      }
-    }
-    if(faceplate[1]){
-      if(faceplate[1][0]){
-        facePlateList.push({...faceplate[1][0], faceplate})
-      }
-    }
-    
-  })
-  return facePlateList
-}
-
-const fetchAllAggregatedFacePlates = async (nodes = []) => {
-  const nodesData = [...nodes]
-  await nodesData.forEach(async (node,nodeIndex) => {
-    // console.log('node', node)
-    const facePlates = await getFacePlateData(node.id, node.deviceIds)
-    // const nodeIndex = nodes.findIndex(n=> n.id === node.id)
-    nodesData[nodeIndex].facePlates = await facePlates
-    const facePlateList = await generateFacePlatesList(facePlates)
-    nodesData[nodeIndex].facePlateList = await facePlateList
-  })
-
-  return nodesData
-}
 
 export const parseFacePlateData = (data) => {
   console.log('parseFacePlateData ---', data);
@@ -280,14 +253,22 @@ export const parseFacePlateData = (data) => {
           // console.log(i, {dataObj, parent, child})
 
           //second array -> If second backbone data exist then make the first child (backbone) of second array as child of first array backbone
-          if(dataObjIndex === 0 && data[i] && Array.isArray(data[i][1]) && data[i][1][0]){
+          if (
+            dataObjIndex === 0 &&
+            data[i] &&
+            Array.isArray(data[i][1]) &&
+            data[i][1][0]
+          ) {
             // console.log('check second backbone exist', data[i][1][0], facePlateData)
-            const {device_id} = data[i][1][0]
-            if(device_id){
-              facePlateData[0].child.push({id: `${device_id}`, conn_color: BACKBONE_CONN_COLOR, isConnected: true})
+            const { device_id } = data[i][1][0];
+            if (device_id) {
+              facePlateData[0].child.push({
+                id: `${device_id}`,
+                conn_color: BACKBONE_CONN_COLOR,
+                isConnected: true,
+              });
             }
           }
-
         });
         facePlates.push(facePlateData);
         // facePlateData.push(facePlateDataObj)

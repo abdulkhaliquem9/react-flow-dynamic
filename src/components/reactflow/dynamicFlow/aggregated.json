@@ -1,92 +1,491 @@
 {
-  "id": "21609bb7-aac8-45c6-b042-7933f45edca5",
-  "deviceType": "BACKBONE",
-  "category":"Server",
-  "deviceIds": ["1", "2"],
-  "childIds": [3, 4, 6, 9, 11, 13, 24, 8, 5, 7, 10, 12],
-  "childCount": 12,
-  "child": [
-    {
-      "id": "800fdd63-0abe-4ba1-96df-40c6aee99664",
-      "deviceType": "SWITCH",
-      "category":"Computer",
-      "deviceIds": [3, 4, 6, 8, 5, 7],
-      "childIds": [],
-      "childCount": 0,
-      "child": []
-    },
-    {
-      "id": "345cda02-5474-4741-a60a-b57fd31073d9",
-      "deviceType": "FTE",
-      "category":"Computer",
-      "deviceIds": [9, 10],
-      "childIds": [],
-      "childCount": 0,
-      "child": []
-    },
-    {
-      "id": "be55df40-cec8-4349-b4df-22fe416e2150",
-      "deviceType": "CNMs",
-      "category":"Server",
-      "deviceIds": [11, 12],
-      "childIds": [14, 15, 17, 19, 16, 18],
-      "childCount": 6,
+  "data": {
+    "breadcrumb": "FTE Community",
+    "aggregateViewData": {
+      "id": "61b517b0-ee37-4556-ae12-d6d8b6f8f076",
+      "deviceType": "BACKBONE",
+      "deviceIds": ["7", "8"],
+      "childIds": [
+        5, 3, 1, 49, 22, 35, 34, 36, 37, 38, 26, 28, 20, 39, 33, 32, 42, 41, 31,
+        27, 2, 6, 4
+      ],
+      "childCount": 23,
       "child": [
         {
-          "id": "338ec619-a254-4e47-82bc-e297aab04fb8",
-          "deviceType": "FTE",
-          "category":"Computer",
-          "deviceIds": [14, 15],
-          "childIds": [],
-          "childCount": 0,
-          "child": []
-        },
-        {
-          "id": "b38751f7-d5e4-417d-9f3d-81f7d1234850",
-          "deviceType": "CNMs",
-          "category":"Computer",
-          "deviceIds": [17, 16],
-          "childIds": [21, 19, 20, 22],
-          "childCount": 4,
+          "id": "0cd69120-3d00-4570-9459-faf59a6c5b41",
+          "deviceType": "SWITCH",
+          "deviceIds": [5, 3, 1, 2, 6, 4],
+          "childIds": [
+            11, 10, 13, 43, 19, 14, 21, 23, 44, 53, 45, 46, 15, 16, 12, 29, 54,
+            55, 40, 56, 30, 51, 50, 52
+          ],
+          "childCount": 24,
           "child": [
             {
-              "id": "ece4bf8c-d5c9-4556-9034-b7619563dc16",
+              "id": "4e8a4c56-3905-44e6-843b-7535935be30b",
               "deviceType": "FTE",
-              "category":"Server",
-              "deviceIds": [21, 20],
+              "deviceIds": [
+                11, 10, 13, 43, 19, 14, 21, 23, 44, 45, 46, 15, 16, 12, 29, 40,
+                30
+              ],
               "childIds": [],
               "childCount": 0,
               "child": []
             },
             {
-              "id": "db352f5c-44e7-40b0-9a07-0126dafbeb79",
-              "deviceType": "non-FTE",
-              "category":"Computer",
-              "deviceIds": [19, 22],
-              "childIds": [],
-              "childCount": 0,
-              "child": []
+              "id": "f98b6125-d3e1-4978-9417-61dd04f32d53",
+              "deviceType": "CF9",
+              "deviceIds": [53, 54, 55, 56, 51, 50, 52],
+              "childIds": [24, 17, 18, 47, 48, 25],
+              "childCount": 6,
+              "child": [
+                {
+                  "id": "b831f94d-e1f8-4582-b60f-792eb80a841c",
+                  "deviceType": "FTE",
+                  "deviceIds": [24, 17, 18, 47, 48, 25],
+                  "childIds": [],
+                  "childCount": 0,
+                  "child": []
+                }
+              ]
             }
           ]
         },
         {
-          "id": "22b3d53c-98a2-47c9-b629-e030c8a6b65d",
-          "deviceType": "non-FTE",
-          "category":"Server",
-          "deviceIds": [19, 18],
+          "id": "a69b4073-c454-4e28-8ebd-c35bde6e4c35",
+          "deviceType": "FTE",
+          "deviceIds": [
+            49, 22, 35, 34, 36, 37, 38, 26, 28, 20, 39, 33, 32, 42, 41, 31, 27
+          ],
           "childIds": [],
           "childCount": 0,
           "child": []
         }
       ]
     },
-    {
-      "id": "0529a239-5de3-4e45-8ca3-e6609f0ef1c1",
-      "deviceType": "non-FTE",
-      "deviceIds": [13, 24],
-      "childIds": [],
-      "childCount": 0,
-      "child": []
+    "deviceCategoryDict": {
+      "Network Device": {
+        "Split": [
+          {
+            "run_device_category": "Network Device",
+            "run_device_name": "IE3300Y",
+            "run_device_id": 1,
+            "run_sub_device_type": "Split",
+            "detailedVideIdsList": [5, 3, 1, 2, 6, 4]
+          },
+          {
+            "run_device_category": "Network Device",
+            "run_device_name": "IE3300G",
+            "run_device_id": 2,
+            "run_sub_device_type": "Split",
+            "detailedVideIdsList": [5, 3, 1, 2, 6, 4]
+          },
+          {
+            "run_device_category": "Network Device",
+            "run_device_name": "C9200L2Y2",
+            "run_device_id": 5,
+            "run_sub_device_type": "Split",
+            "detailedVideIdsList": [5, 3, 1, 2, 6, 4]
+          },
+          {
+            "run_device_category": "Network Device",
+            "run_device_name": "C9200L2G2",
+            "run_device_id": 6,
+            "run_sub_device_type": "Split",
+            "detailedVideIdsList": [5, 3, 1, 2, 6, 4]
+          }
+        ],
+        "Level 2": [
+          {
+            "run_device_category": "Network Device",
+            "run_device_name": "C2960XY1",
+            "run_device_id": 3,
+            "run_sub_device_type": "Level 2",
+            "detailedVideIdsList": [5, 3, 1, 2, 6, 4]
+          },
+          {
+            "run_device_category": "Network Device",
+            "run_device_name": "C2960XG1",
+            "run_device_id": 4,
+            "run_sub_device_type": "Level 2",
+            "detailedVideIdsList": [5, 3, 1, 2, 6, 4]
+          }
+        ],
+        "Backbone": [
+          {
+            "run_device_category": "Network Device",
+            "run_device_name": "C9300BBY",
+            "run_device_id": 7,
+            "run_sub_device_type": "Backbone",
+            "detailedVideIdsList": ["7", "8"]
+          },
+          {
+            "run_device_category": "Network Device",
+            "run_device_name": "C9300BBG",
+            "run_device_id": 8,
+            "run_sub_device_type": "Backbone",
+            "detailedVideIdsList": ["7", "8"]
+          }
+        ]
+      },
+      "Computers": {
+        "default": [
+          {
+            "run_device_category": "Computers",
+            "run_device_name": "TO-FTE-ESVT4A",
+            "run_device_id": 9,
+            "run_sub_device_type": "",
+            "detailedVideIdsList": []
+          },
+          {
+            "run_device_category": "Computers",
+            "run_device_name": "TO-FTE-HPZ4401",
+            "run_device_id": 15,
+            "run_sub_device_type": "",
+            "detailedVideIdsList": [3, 4]
+          },
+          {
+            "run_device_category": "Computers",
+            "run_device_name": "TO-FTE-ESVT4B",
+            "run_device_id": 16,
+            "run_sub_device_type": "",
+            "detailedVideIdsList": [3, 4]
+          },
+          {
+            "run_device_category": "Computers",
+            "run_device_name": "TO-FTE-Z4G4-5",
+            "run_device_id": 19,
+            "run_sub_device_type": "",
+            "detailedVideIdsList": [5, 6]
+          },
+          {
+            "run_device_category": "Computers",
+            "run_device_name": "TO-FTE-ACET53",
+            "run_device_id": 20,
+            "run_sub_device_type": "",
+            "detailedVideIdsList": [7, 8]
+          },
+          {
+            "run_device_category": "Computers",
+            "run_device_name": "TO-FTE-T5811",
+            "run_device_id": 21,
+            "run_sub_device_type": "",
+            "detailedVideIdsList": [5, 6]
+          },
+          {
+            "run_device_category": "Computers",
+            "run_device_name": "vm-fte-flx181-1",
+            "run_device_id": 22,
+            "run_sub_device_type": "",
+            "detailedVideIdsList": [7, 8]
+          },
+          {
+            "run_device_category": "Computers",
+            "run_device_name": "to-fte-T5814",
+            "run_device_id": 23,
+            "run_sub_device_type": "",
+            "detailedVideIdsList": [3, 4]
+          },
+          {
+            "run_device_category": "Computers",
+            "run_device_name": "ITC",
+            "run_device_id": 26,
+            "run_sub_device_type": "",
+            "detailedVideIdsList": [7, 8]
+          },
+          {
+            "run_device_category": "Computers",
+            "run_device_name": "VLAN189-Z90",
+            "run_device_id": 27,
+            "run_sub_device_type": "",
+            "detailedVideIdsList": [7, 8]
+          },
+          {
+            "run_device_category": "Computers",
+            "run_device_name": "vppr-btc12",
+            "run_device_id": 28,
+            "run_sub_device_type": "",
+            "detailedVideIdsList": [7, 8]
+          },
+          {
+            "run_device_category": "Computers",
+            "run_device_name": "VM-FTE-ENMFLEX1",
+            "run_device_id": 49,
+            "run_sub_device_type": "",
+            "detailedVideIdsList": [7, 8]
+          }
+        ]
+      },
+      "Embedded Devices": {
+        "CF9": [
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "00-40-84-1A-05-C6",
+            "run_device_id": 53,
+            "run_sub_device_type": "CF9",
+            "detailedVideIdsList": [3]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "00-40-84-0B-F3-85",
+            "run_device_id": 55,
+            "run_sub_device_type": "CF9",
+            "detailedVideIdsList": [1]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "00-40-84-16-4E-79",
+            "run_device_id": 56,
+            "run_sub_device_type": "CF9",
+            "detailedVideIdsList": [1]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "00-40-84-0B-91-CF",
+            "run_device_id": 51,
+            "run_sub_device_type": "CF9",
+            "detailedVideIdsList": [2]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "00-09-0B-01-40-03",
+            "run_device_id": 54,
+            "run_sub_device_type": "CF9",
+            "detailedVideIdsList": [1]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "00-40-84-1A-05-88",
+            "run_device_id": 52,
+            "run_sub_device_type": "CF9",
+            "detailedVideIdsList": [4]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "00-40-84-0C-13-30",
+            "run_device_id": 50,
+            "run_sub_device_type": "CF9",
+            "detailedVideIdsList": [2]
+          }
+        ],
+        "C300v2": [
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "C300v2 #003",
+            "run_device_id": 10,
+            "run_sub_device_type": "C300v2",
+            "detailedVideIdsList": [5, 6]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "C300v2 #004",
+            "run_device_id": 11,
+            "run_sub_device_type": "C300v2",
+            "detailedVideIdsList": [5, 6]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "C300v2 #031",
+            "run_device_id": 13,
+            "run_sub_device_type": "C300v2",
+            "detailedVideIdsList": [5, 6]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "C300v2 #032",
+            "run_device_id": 14,
+            "run_sub_device_type": "C300v2",
+            "detailedVideIdsList": [5, 6]
+          }
+        ],
+        "FTEB": [
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "FTEB #026",
+            "run_device_id": 12,
+            "run_sub_device_type": "FTEB",
+            "detailedVideIdsList": [1, 2]
+          }
+        ],
+        "FIM4": [
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "FIM4 #047",
+            "run_device_id": 17,
+            "run_sub_device_type": "FIM4",
+            "detailedVideIdsList": [52, 53]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "FIM4 #048",
+            "run_device_id": 18,
+            "run_sub_device_type": "FIM4",
+            "detailedVideIdsList": [52, 53]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "FIM4 #211",
+            "run_device_id": 47,
+            "run_sub_device_type": "FIM4",
+            "detailedVideIdsList": [52, 53]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "FIM4 #212",
+            "run_device_id": 48,
+            "run_sub_device_type": "FIM4",
+            "detailedVideIdsList": [52, 53]
+          }
+        ],
+        "C300V5": [
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "C300V5 #065",
+            "run_device_id": 25,
+            "run_sub_device_type": "C300V5",
+            "detailedVideIdsList": [52, 53]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "C300V5 #063",
+            "run_device_id": 24,
+            "run_sub_device_type": "C300V5",
+            "detailedVideIdsList": [52, 53]
+          }
+        ],
+        "CN100": [
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "CN100 #111",
+            "run_device_id": 29,
+            "run_sub_device_type": "CN100",
+            "detailedVideIdsList": [1, 2]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "CN100 #112",
+            "run_device_id": 30,
+            "run_sub_device_type": "CN100",
+            "detailedVideIdsList": [1, 2]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "CN100 #113",
+            "run_device_id": 31,
+            "run_sub_device_type": "CN100",
+            "detailedVideIdsList": [7, 8]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "CN100 #115",
+            "run_device_id": 32,
+            "run_sub_device_type": "CN100",
+            "detailedVideIdsList": [7, 8]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "CN100 #117",
+            "run_device_id": 33,
+            "run_sub_device_type": "CN100",
+            "detailedVideIdsList": [7, 8]
+          }
+        ],
+        "C300V5-HIVE": [
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "C300V5-HIVE #121",
+            "run_device_id": 34,
+            "run_sub_device_type": "C300V5-HIVE",
+            "detailedVideIdsList": [7, 8]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "C300V5-HIVE #123",
+            "run_device_id": 35,
+            "run_sub_device_type": "C300V5-HIVE",
+            "detailedVideIdsList": [7, 8]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "C300V5-HIVE #125",
+            "run_device_id": 36,
+            "run_sub_device_type": "C300V5-HIVE",
+            "detailedVideIdsList": [7, 8]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "C300V5-HIVE #127",
+            "run_device_id": 37,
+            "run_sub_device_type": "C300V5-HIVE",
+            "detailedVideIdsList": [7, 8]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "C300V5-HIVE #129",
+            "run_device_id": 38,
+            "run_sub_device_type": "C300V5-HIVE",
+            "detailedVideIdsList": [7, 8]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "C300V5-HIVE #171",
+            "run_device_id": 43,
+            "run_sub_device_type": "C300V5-HIVE",
+            "detailedVideIdsList": [5, 6]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "C300V5-HIVE #173",
+            "run_device_id": 44,
+            "run_sub_device_type": "C300V5-HIVE",
+            "detailedVideIdsList": [3, 4]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "C300V5-HIVE #175",
+            "run_device_id": 45,
+            "run_sub_device_type": "C300V5-HIVE",
+            "detailedVideIdsList": [3, 4]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "C300V5-HIVE #179",
+            "run_device_id": 46,
+            "run_sub_device_type": "C300V5-HIVE",
+            "detailedVideIdsList": [3, 4]
+          }
+        ],
+        "UOC": [
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "UOC #151",
+            "run_device_id": 39,
+            "run_sub_device_type": "UOC",
+            "detailedVideIdsList": [7, 8]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "UOC #153",
+            "run_device_id": 40,
+            "run_sub_device_type": "UOC",
+            "detailedVideIdsList": [1, 2]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "UOC #155",
+            "run_device_id": 41,
+            "run_sub_device_type": "UOC",
+            "detailedVideIdsList": [7, 8]
+          },
+          {
+            "run_device_category": "Embedded Devices",
+            "run_device_name": "UOC #157",
+            "run_device_id": 42,
+            "run_sub_device_type": "UOC",
+            "detailedVideIdsList": [7, 8]
+          }
+        ]
+      }
     }
-  ]
+  }
 }

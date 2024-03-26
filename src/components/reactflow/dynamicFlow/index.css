@@ -1,0 +1,37 @@
+.menu-burger {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: fit-content;
+    height: 100vh;
+    background-color: gray;
+    z-index:10;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-burger .menu-search-bar {
+display: flex;
+}
+
+.menu-burger ul {
+    list-style: none;
+    padding-left: 20px;
+}
+.menu-burger ul svg {
+    margin-right: 5px;
+}
+
+.menu-burger li {
+    list-style: none;
+    padding-bottom: 10px;
+    padding-top: 5px;
+}
+
+.menu-burger li.item-open {
+    display: block;
+}
+.menu-burger li.item-closed {
+    display: none;
+}
